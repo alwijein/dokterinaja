@@ -1,4 +1,5 @@
 import 'package:dokterin_aja/constants.dart';
+import 'package:dokterin_aja/routes.dart';
 import 'package:dokterin_aja/screens/onboarding_screen/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,14 +14,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'DokterinAja',
       theme: ThemeData(
         textTheme: GoogleFonts.varelaRoundTextTheme(
           Theme.of(context).textTheme,
         ),
         scaffoldBackgroundColor: kBackgroundColor,
       ),
-      home: OnboardingScreen(),
+      initialRoute: OnboardingScreen.routeName,
+      routes: routes,
     );
   }
 }

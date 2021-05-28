@@ -1,4 +1,5 @@
 import 'package:dokterin_aja/constants.dart';
+import 'package:dokterin_aja/screens/home_screen/home_screen.dart';
 import 'package:dokterin_aja/size_config.dart';
 import 'package:flutter/material.dart';
 
@@ -50,7 +51,10 @@ class Body extends StatelessWidget {
                     height: size.height / 40,
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, HomeScreen.routeName, (route) => false);
+                    },
                     child: Text(
                       "Pilih Dokter Sekarang",
                       style: TextStyle(
