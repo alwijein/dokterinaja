@@ -1,10 +1,10 @@
 import 'package:dokterin_aja/constants.dart';
 import 'package:dokterin_aja/screens/home_screen/components/banner_card.dart';
+import 'package:dokterin_aja/screens/home_screen/components/card_dokter.dart';
 import 'package:dokterin_aja/screens/home_screen/components/card_kategori.dart';
 import 'package:dokterin_aja/screens/home_screen/components/headling_text.dart';
 import 'package:dokterin_aja/size_config.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -36,7 +36,7 @@ class Body extends StatelessWidget {
                     press: () {},
                   ),
                   SizedBox(
-                    height: getPropertionateScreenHeight(30),
+                    height: getPropertionateScreenHeight(20),
                   ),
                   buildKategoriList(),
                   SizedBox(
@@ -45,6 +45,15 @@ class Body extends StatelessWidget {
                   HeadlingText(
                     text: "Daftar Dokter",
                     press: () {},
+                  ),
+                  SizedBox(
+                    height: getPropertionateScreenHeight(20),
+                  ),
+                  CardDokter(
+                    img: 'assets/images/banner-photo.png',
+                    bgColor: kBlueColor.withOpacity(0.6),
+                    titleText: 'Dr. Supramenan',
+                    subtitleText: 'Dokter Mata',
                   ),
                 ],
               ),
@@ -63,7 +72,7 @@ class Body extends StatelessWidget {
           CardKategori(
             image: 'assets/icons/dental_surgeon.png',
             text: "Spesialis\nGigi",
-            cardColor: kBlueColor,
+            bgColor: kBlueColor,
             press: () {},
           ),
           SizedBox(
@@ -72,7 +81,7 @@ class Body extends StatelessWidget {
           CardKategori(
             image: 'assets/icons/eye_specialist.png',
             text: "Spesialis\nMata",
-            cardColor: kYellowColor,
+            bgColor: kYellowColor,
             press: () {},
           ),
           SizedBox(
@@ -81,7 +90,7 @@ class Body extends StatelessWidget {
           CardKategori(
             image: 'assets/icons/heart_surgeon.png',
             text: "Spesialis\nJantung",
-            cardColor: kOrangeColor,
+            bgColor: kOrangeColor,
             press: () {},
           ),
           SizedBox(
@@ -90,7 +99,7 @@ class Body extends StatelessWidget {
           CardKategori(
             image: 'assets/icons/dental_surgeon.png',
             text: "Spesialis\nGigi",
-            cardColor: kBlueColor,
+            bgColor: kBlueColor,
             press: () {},
           ),
         ],

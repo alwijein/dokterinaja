@@ -7,17 +7,17 @@ class CardKategori extends StatelessWidget {
     this.image,
     this.text,
     this.press,
-    this.cardColor,
+    this.bgColor,
   }) : super(key: key);
   final String image, text;
   final Function press;
-  final Color cardColor;
+  final Color bgColor;
   @override
   Widget build(BuildContext context) {
     return Container(
       height: getPropertionateScreenHeight(140),
       decoration: BoxDecoration(
-        color: cardColor,
+        color: bgColor,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Padding(
