@@ -3,6 +3,7 @@ import 'package:dokterin_aja/screens/home_screen/components/banner_card.dart';
 import 'package:dokterin_aja/screens/home_screen/components/card_dokter.dart';
 import 'package:dokterin_aja/screens/home_screen/components/card_kategori.dart';
 import 'package:dokterin_aja/screens/home_screen/components/headling_text.dart';
+import 'package:dokterin_aja/screens/list_screen_dokter/list_screen_dokter.dart';
 import 'package:dokterin_aja/size_config.dart';
 import 'package:flutter/material.dart';
 
@@ -44,23 +45,51 @@ class Body extends StatelessWidget {
                   ),
                   HeadlingText(
                     text: "Daftar Dokter",
-                    press: () {},
+                    press: () {
+                      Navigator.pushNamed(context, ListScreenDokter.routeName);
+                    },
                   ),
                   SizedBox(
                     height: getPropertionateScreenHeight(20),
                   ),
-                  CardDokter(
-                    img: 'assets/images/banner-photo.png',
-                    bgColor: kBlueColor.withOpacity(0.6),
-                    titleText: 'Dr. Supramenan',
-                    subtitleText: 'Dokter Mata',
-                  ),
+                  buildDokterList(),
                 ],
               ),
             ),
           ),
         ),
       ),
+    );
+  }
+
+  Column buildDokterList() {
+    return Column(
+      children: [
+        CardDokter(
+          img: 'assets/images/banner-photo.png',
+          bgColor: kBlueColor.withOpacity(0.6),
+          titleText: 'Dr. Supramenan',
+          subtitleText: 'Dokter Mata',
+        ),
+        SizedBox(
+          height: getPropertionateScreenHeight(15),
+        ),
+        CardDokter(
+          img: 'assets/images/banner-photo.png',
+          bgColor: kOrangeColor.withOpacity(0.6),
+          titleText: 'Dr. Andi Ikhlasul',
+          subtitleText: 'Dokter Kelamin',
+        ),
+        SizedBox(
+          height: getPropertionateScreenHeight(15),
+        ),
+        CardDokter(
+          img: 'assets/images/banner-photo.png',
+          bgColor: kYellowColor.withOpacity(0.6),
+          titleText: 'Dr. Udin',
+          subtitleText: 'Dokter Umum',
+        ),
+      ],
     );
   }
 

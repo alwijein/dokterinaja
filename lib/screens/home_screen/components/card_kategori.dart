@@ -26,6 +26,7 @@ class CardKategori extends StatelessWidget {
           vertical: getPropertionateScreenHeight(10),
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset(
