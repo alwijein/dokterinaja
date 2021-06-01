@@ -1,6 +1,7 @@
 import 'package:dokterin_aja/constants.dart';
 import 'package:dokterin_aja/screens/detail_dokter/detail_dokter.dart';
 import 'package:dokterin_aja/size_config.dart';
+import 'package:dokterin_aja/utils/color_rand.dart';
 import 'package:flutter/material.dart';
 
 class CardDokter extends StatelessWidget {
@@ -9,31 +10,36 @@ class CardDokter extends StatelessWidget {
     this.img,
     this.titleText,
     this.subtitleText,
-    this.bgColor,
   }) : super(key: key);
   final String img, titleText, subtitleText;
-  final Color bgColor;
 
   @override
   Widget build(BuildContext context) {
+    ColorRand colorRand = new ColorRand();
     return InkWell(
       onTap: () {
         Navigator.pushNamed(context, DetailDokter.routeNamed);
       },
       child: Container(
-        height: getPropertionateScreenHeight(80),
+        margin: EdgeInsets.only(
+          top: getPropertionateScreenHeight(10),
+        ),
         decoration: BoxDecoration(
-          color: bgColor,
+          color: colorRand.randColor,
           borderRadius: BorderRadius.circular(10),
         ),
         child: ListTile(
-          leading: Image.asset(img),
+          leading: ClipRRect(
+            borderRadius: BorderRadius.circular(50),
+            child: Image.asset(img),
+          ),
           title: Text(
             titleText,
             style: TextStyle(
-                color: kTitleTextColor,
-                fontWeight: FontWeight.bold,
-                fontSize: getPropertionateScreenWidht(18)),
+              color: kTitleTextColor,
+              fontWeight: FontWeight.bold,
+              fontSize: getPropertionateScreenWidht(18),
+            ),
           ),
           subtitle: Text(
             subtitleText,

@@ -1,4 +1,5 @@
 import 'package:dokterin_aja/size_config.dart';
+import 'package:dokterin_aja/utils/color_rand.dart';
 import 'package:flutter/material.dart';
 
 class CardKategori extends StatelessWidget {
@@ -7,17 +8,19 @@ class CardKategori extends StatelessWidget {
     this.image,
     this.text,
     this.press,
-    this.bgColor,
   }) : super(key: key);
   final String image, text;
   final Function press;
-  final Color bgColor;
   @override
   Widget build(BuildContext context) {
+    ColorRand colorRand = ColorRand();
     return Container(
+      margin: EdgeInsets.only(
+        right: getPropertionateScreenWidht(10),
+      ),
       height: getPropertionateScreenHeight(140),
       decoration: BoxDecoration(
-        color: bgColor,
+        color: colorRand.randColor,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Padding(

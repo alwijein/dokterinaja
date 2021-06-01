@@ -15,6 +15,12 @@ class ListScreenDokter extends StatelessWidget {
         iconTheme: IconThemeData(
           color: Colors.black,
         ),
+        title: Text(
+          'Daftar Dokter',
+          style: TextStyle(
+            color: kTitleTextColor,
+          ),
+        ),
       ),
       body: Body(),
     );

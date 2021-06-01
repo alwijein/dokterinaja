@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "423317648726",
+    "project_id": "dokterinaja",
+    "storage_bucket": "dokterinaja.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:423317648726:android:74be868cfb14e1bc2f92f7",
+        "android_client_info": {
+          "package_name": "com.example.dokterin_aja"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "423317648726-s8oh2l5m4bn5qie0c4gvlrjfflc31nrq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxmSM71HmST0WltCP_gkRSHVL0HTC5UEo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "423317648726-s8oh2l5m4bn5qie0c4gvlrjfflc31nrq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
