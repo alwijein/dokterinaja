@@ -31,7 +31,7 @@ class CardDokter extends StatelessWidget {
         child: ListTile(
           leading: ClipRRect(
             borderRadius: BorderRadius.circular(50),
-            child: Image.asset(img),
+            child: Image.network(img),
           ),
           title: Text(
             titleText,
