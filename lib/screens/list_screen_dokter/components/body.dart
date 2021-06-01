@@ -7,66 +7,38 @@ import 'package:flutter/material.dart';
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    CollectionReference doctors = firebaseFirestore.collection('doctors');
     return SafeArea(
       child: SizedBox(
         width: double.infinity,
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-              // horizontal: getPropertionateScreenWidht(20),
-              // vertical: getPropertionateScreenHeight(10),
-              ),
-          child: Container(
-            width: SizeConfig.screenWidth,
-            height: SizeConfig.screenHeight,
-            child: StreamBuilder(
-              stream: FirebaseFirestore.instance
-                  .collection("dokterinaja_db")
-                  .snapshots(),
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-                return ListDokterCloud(snapshot.data.documents);
-              },
-            ),
+        child: Container(
+          width: SizeConfig.screenWidth,
+          height: SizeConfig.screenHeight,
+          child: FutureBuilder<QuerySnapshot>(
+            future: doctors.get(),
+            builder: (_, snapshot) {
+              if (snapshot.hasData) {
+                return Column(
+                    children: snapshot.data.docs
+                        .map(
+                          (e) => CardListDokter(
+                            img: e.data()['imgUrl'],
+                            nama: e.data()['nama'],
+                            profesi: e.data()['profesi'],
+                            price: e.data()['price'],
+                          ),
+                        )
+                        .toList());
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
           ),
         ),
       ),
-    );
-  }
-
-  ListView buildCardListDokter() {
-    return ListView.builder(
-      itemCount: Doctor.doctorList.length,
-      itemBuilder: (context, index) {
-        return CardListDokter(
-          img: Doctor.doctorList[index].imgUrl,
-          nama: Doctor.doctorList[index].nama,
-          profesi: Doctor.doctorList[index].profesi,
-          price: Doctor.doctorList[index].price,
-        );
-      },
-    );
-  }
-}
-
-class ListDokterCloud extends StatelessWidget {
-  final List<DocumentSnapshot> listDokterCloud;
-
-  const ListDokterCloud(documents, {Key key, this.listDokterCloud})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: listDokterCloud == null ? 0 : listDokterCloud.length,
-      itemBuilder: (context, index) {
-        String nama = listDokterCloud[index].data()['nama'];
-        print(nama);
-        return Text(nama);
-      },
     );
   }
 }

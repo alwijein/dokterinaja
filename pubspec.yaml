@@ -23,7 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cloud_firestore: ^0.16.0+1
+  cloud_firestore: ^0.15.0
+  firebase_core : ^0.6.0
   cupertino_icons: ^1.0.2
   flutter_svg: ^0.22.0
   google_fonts: ^1.0.0

@@ -23,17 +23,19 @@ class CardListDokter extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.symmetric(
           vertical: getPropertionateScreenHeight(20),
-          horizontal: getPropertionateScreenWidht(10),
+          horizontal: getPropertionateScreenWidht(20),
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(50),
               child: Container(
-                width: getPropertionateScreenWidht(80),
-                child: Image.asset(img),
+                width: getPropertionateScreenWidht(70),
+                child: Image.network(img),
               ),
+            ),
+            SizedBox(
+              width: getPropertionateScreenWidht(20),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,7 +58,11 @@ class CardListDokter extends StatelessWidget {
                 ),
               ],
             ),
-            Text(price),
+            Spacer(),
+            Text(
+              price,
+              style: TextStyle(fontSize: getPropertionateScreenWidht(17)),
+            ),
           ],
         ),
       ),
