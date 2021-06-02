@@ -3,9 +3,10 @@ import 'package:dokterin_aja/constants.dart';
 import 'package:dokterin_aja/models/doctor.dart';
 import 'package:dokterin_aja/screens/home_screen/components/banner_card.dart';
 import 'package:dokterin_aja/screens/home_screen/components/card_dokter.dart';
-import 'package:dokterin_aja/screens/home_screen/components/card_kategori.dart';
+import 'package:dokterin_aja/screens/components/card_kategori.dart';
 import 'package:dokterin_aja/screens/home_screen/components/headling_text.dart';
 import 'package:dokterin_aja/screens/list_screen_dokter/list_screen_dokter.dart';
+import 'package:dokterin_aja/screens/list_screen_kategori/list_screen_kategori.dart';
 import 'package:dokterin_aja/services/database_services.dart';
 import 'package:dokterin_aja/size_config.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,12 @@ class Body extends StatelessWidget {
                   ),
                   HeadlingText(
                     text: "Kategori",
-                    press: () {},
+                    press: () {
+                      press() {
+                        Navigator.pushNamed(
+                            context, ListScreenKategori.routeNamed);
+                      }
+                    },
                   ),
                   SizedBox(
                     height: getPropertionateScreenHeight(10),
