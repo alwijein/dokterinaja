@@ -39,10 +39,8 @@ class Body extends StatelessWidget {
                   HeadlingText(
                     text: "Kategori",
                     press: () {
-                      press() {
-                        Navigator.pushNamed(
-                            context, ListScreenKategori.routeNamed);
-                      }
+                      Navigator.pushNamed(
+                          context, ListScreenKategori.routeName);
                     },
                   ),
                   SizedBox(
@@ -61,7 +59,9 @@ class Body extends StatelessWidget {
                   SizedBox(
                     height: getPropertionateScreenHeight(10),
                   ),
-                  Container(child: buildDokterList()),
+                  Container(
+                    child: buildDokterList(),
+                  ),
                 ],
               ),
             ),
@@ -72,20 +72,22 @@ class Body extends StatelessWidget {
   }
 
   FutureBuilder buildDokterList() {
-    return FutureBuilder<QuerySnapshot>(
-      future: DatabaseServices.doctors.get(),
+    return FutureBuilder<List<Doctor>>(
+      future: DatabaseServices.doctorsLimit(),
       builder: (_, snapshot) {
         if (snapshot.hasData) {
+          List<CardDokter> cardDokter = [];
+          for (var dokter in snapshot.data) {
+            cardDokter.add(
+              CardDokter(
+                img: dokter.imgUrl,
+                titleText: dokter.nama,
+                subtitleText: dokter.profesi,
+              ),
+            );
+          }
           return Column(
-            children: snapshot.data.docs
-                .map(
-                  (e) => CardDokter(
-                    img: e.data()['imgUrl'],
-                    titleText: e.data()['nama'],
-                    subtitleText: e.data()['profesi'],
-                  ),
-                )
-                .toList(),
+            children: cardDokter,
           );
         } else {
           return Center(
@@ -96,6 +98,20 @@ class Body extends StatelessWidget {
     );
   }
 
+// list view builder for dokter card
+
+// return ListView.builder(
+//             physics: NeverScrollableScrollPhysics(),
+//             itemCount: snapshot.data.length,
+//             itemBuilder: (_, index) {
+//               Doctor doctor = snapshot.data[index];
+//               return CardDokter(
+//                 img: doctor.imgUrl,
+//                 titleText: doctor.nama,
+//                 subtitleText: doctor.profesi,
+//               );
+//             },
+//           );
   SingleChildScrollView buildKategoriList() {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,

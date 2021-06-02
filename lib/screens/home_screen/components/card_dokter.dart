@@ -18,7 +18,7 @@ class CardDokter extends StatelessWidget {
     ColorRand colorRand = new ColorRand();
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, DetailDokter.routeNamed);
+        Navigator.pushNamed(context, DetailDokter.routeName);
       },
       child: Container(
         margin: EdgeInsets.only(
@@ -29,9 +29,16 @@ class CardDokter extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         child: ListTile(
-          leading: ClipRRect(
-            borderRadius: BorderRadius.circular(50),
-            child: Image.network(img),
+          leading: Container(
+            height: getPropertionateScreenHeight(100),
+            width: getPropertionateScreenWidht(100),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              image: DecorationImage(
+                image: NetworkImage(img),
+                fit: BoxFit.contain,
+              ),
+            ),
           ),
           title: Text(
             titleText,

@@ -31,7 +31,17 @@ class CardListDokter extends StatelessWidget {
               borderRadius: BorderRadius.circular(50),
               child: Container(
                 width: getPropertionateScreenWidht(70),
-                child: Image.network(img),
+                child: Container(
+                  height: getPropertionateScreenHeight(100),
+                  width: getPropertionateScreenWidht(100),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      image: NetworkImage(img),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
               ),
             ),
             SizedBox(
