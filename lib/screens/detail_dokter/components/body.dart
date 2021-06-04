@@ -7,12 +7,18 @@ import 'package:dokterin_aja/screens/detail_dokter/components/headling_title.dar
 import 'package:dokterin_aja/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:delayed_display/delayed_display.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Body extends StatelessWidget {
   final Doctor doctor;
   Body(this.doctor);
   @override
   Widget build(BuildContext context) {
+    final Uri _telLaunchUri = Uri(
+      scheme: 'tel',
+      path: doctor.nomor,
+    );
     return SingleChildScrollView(
       child: Container(
         width: double.infinity,
@@ -61,79 +67,93 @@ class Body extends StatelessWidget {
                 padding: EdgeInsets.only(top: 30, left: 30, right: 30),
                 child: Column(
                   children: [
-                    Row(
-                      children: [
-                        Container(
-                          height: getPropertionateScreenHeight(100),
-                          width: getPropertionateScreenWidht(100),
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                              image: NetworkImage(doctor.imgUrl),
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              doctor.nama,
-                              style: TextStyle(
-                                color: kTitleTextColor,
-                                fontWeight: FontWeight.bold,
-                                fontSize: getPropertionateScreenHeight(25),
+                    DelayedDisplay(
+                      delay: Duration(milliseconds: 200),
+                      child: Row(
+                        children: [
+                          Container(
+                            height: getPropertionateScreenHeight(100),
+                            width: getPropertionateScreenWidht(100),
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                image: NetworkImage(doctor.imgUrl),
+                                fit: BoxFit.contain,
                               ),
                             ),
-                            Row(
-                              children: [
-                                Text(
-                                  doctor.profesi,
-                                  style: TextStyle(
-                                    color: kSecondaryColor,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: getPropertionateScreenHeight(17),
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Dr. " + doctor.nama,
+                                style: TextStyle(
+                                  color: kTitleTextColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: getPropertionateScreenHeight(25),
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    doctor.profesi,
+                                    style: TextStyle(
+                                      color: kSecondaryColor,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize:
+                                          getPropertionateScreenHeight(17),
+                                    ),
                                   ),
-                                ),
-                                Text(
-                                  "- Awal Bros",
-                                  style: TextStyle(
-                                    color: kSecondaryColor,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: getPropertionateScreenHeight(17),
+                                  Text(
+                                    "- Awal Bros",
+                                    style: TextStyle(
+                                      color: kSecondaryColor,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize:
+                                          getPropertionateScreenHeight(17),
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                PillsRounded(
-                                  text: doctor.pengalaman,
-                                ),
-                                PillsRounded(
-                                  text: doctor.price,
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                SvgPicture.asset(
-                                  'assets/icons/phone.svg',
-                                  width: getPropertionateScreenWidht(20),
-                                ),
-                                SizedBox(
-                                  width: 15,
-                                ),
-                                SvgPicture.asset(
-                                  'assets/icons/chat.svg',
-                                  width: getPropertionateScreenWidht(20),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                      ],
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  PillsRounded(
+                                    text: doctor.pengalaman,
+                                  ),
+                                  PillsRounded(
+                                    text: doctor.price == 'free'
+                                        ? doctor.price
+                                        : 'Rp' + doctor.price,
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  GestureDetector(
+                                    onTap: () =>
+                                        launch(_telLaunchUri.toString()),
+                                    child: SvgPicture.asset(
+                                      'assets/icons/phone.svg',
+                                      width: getPropertionateScreenWidht(20),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 15,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () => _launchURL(),
+                                    child: SvgPicture.asset(
+                                      'assets/icons/chat.svg',
+                                      width: getPropertionateScreenWidht(20),
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: 20,
@@ -141,23 +161,30 @@ class Body extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        HeadlingTitle(
-                          title: 'Tentang Dokter',
+                        DelayedDisplay(
+                          delay: Duration(milliseconds: 200),
+                          child: HeadlingTitle(
+                            title: 'Tentang Dokter',
+                          ),
                         ),
-                        DescDokter(
-                          about: doctor.about,
+                        DelayedDisplay(
+                          delay: Duration(milliseconds: 200),
+                          child: DescDokter(
+                            about: doctor.about,
+                          ),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            HeadlingTitle(
-                              title: 'Jadwal Kerja',
-                            ),
-                            CardJadwal(
-                              hari: "Senin - Jum'at",
-                              jam: doctor.jadwalKerja,
-                            ),
-                          ],
+                        DelayedDisplay(
+                          delay: Duration(milliseconds: 200),
+                          child: HeadlingTitle(
+                            title: 'Jadwal Kerja',
+                          ),
+                        ),
+                        DelayedDisplay(
+                          delay: Duration(milliseconds: 200),
+                          child: CardJadwal(
+                            hari: "Senin - Jum'at",
+                            jam: doctor.jadwalKerja,
+                          ),
                         )
                       ],
                     ),
@@ -169,5 +196,14 @@ class Body extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  _launchURL() async {
+    String url = 'https://wa.me/' + doctor.nomor;
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

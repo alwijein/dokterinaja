@@ -1,7 +1,14 @@
 import 'package:flutter/cupertino.dart';
 
 class Doctor {
-  final String nama, imgUrl, profesi, jadwalKerja, price, about, pengalaman;
+  final String nama,
+      imgUrl,
+      profesi,
+      jadwalKerja,
+      price,
+      about,
+      pengalaman,
+      nomor;
   final int id;
 
 // konstruktor for doctor list
@@ -14,5 +21,6 @@ class Doctor {
     @required this.about,
     @required this.price,
     @required this.pengalaman,
+    @required this.nomor,
   });
 }

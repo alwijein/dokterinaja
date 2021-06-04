@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:delayed_display/delayed_display.dart';
 import 'package:dokterin_aja/constants.dart';
 import 'package:dokterin_aja/models/doctor.dart';
 import 'package:dokterin_aja/screens/list_screen_dokter/components/card_list_dokter.dart';
@@ -30,6 +31,11 @@ class _BodyState extends State<Body> {
                 : DatabaseServices.doctorsKategoris(widget.kategori),
             builder: (_, snapshot) {
               if (snapshot.hasData) {
+                if (snapshot.data.length == 0) {
+                  return Center(
+                    child: Text('Error'),
+                  );
+                }
                 return EasyRefresh(
                   onRefresh: () async {
                     setState(() {});
@@ -38,13 +44,20 @@ class _BodyState extends State<Body> {
                       itemCount: snapshot.data.length,
                       itemBuilder: (_, index) {
                         Doctor doctor = snapshot.data[index];
-                        return CardListDokter(
-                          img: doctor.imgUrl,
-                          nama: doctor.nama,
-                          profesi: doctor.profesi,
-                          price: doctor.price,
+                        return DelayedDisplay(
+                          delay: Duration(milliseconds: 200),
+                          child: CardListDokter(
+                            img: doctor.imgUrl,
+                            nama: doctor.nama,
+                            profesi: doctor.profesi,
+                            price: doctor.price,
+                          ),
                         );
                       }),
+                );
+              } else if (snapshot.hasError) {
+                return Center(
+                  child: Text("Error"),
                 );
               } else {
                 return Center(

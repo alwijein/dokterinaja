@@ -51,10 +51,10 @@ class CardListDokter extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  nama,
+                  'Dr. ' + nama,
                   style: TextStyle(
                     color: kTitleTextColor,
-                    fontSize: getPropertionateScreenWidht(20),
+                    fontSize: getPropertionateScreenWidht(18),
                     fontWeight: FontWeight.bold,
                   ),
                 ),

@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dokterin_aja/models/doctor.dart';
-import 'package:dokterin_aja/screens/home_screen/components/card_dokter.dart';
 
 class DatabaseServices {
   static FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
@@ -21,6 +20,7 @@ class DatabaseServices {
           price: e.data()['price'],
           about: e.data()['about'],
           pengalaman: e.data()['pengalaman'],
+          nomor: e.data()['nomor'],
         ),
       );
     }
@@ -41,6 +41,7 @@ class DatabaseServices {
           price: e.data()['price'],
           about: e.data()['about'],
           pengalaman: e.data()['pengalaman'],
+          nomor: e.data()['nomor'],
         ),
       );
     }
@@ -62,6 +63,7 @@ class DatabaseServices {
           price: e.data()['price'],
           about: e.data()['about'],
           pengalaman: e.data()['pengalaman'],
+          nomor: e.data()['nomor'],
         ),
       );
     }

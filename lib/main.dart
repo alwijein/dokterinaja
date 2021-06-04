@@ -23,6 +23,19 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.varelaRoundTextTheme(
           Theme.of(context).textTheme,
         ),
+        appBarTheme: AppBarTheme(
+          color: kBackgroundColor,
+          textTheme: TextTheme(
+            headline6: TextStyle(
+                color: kTitleTextColor,
+                fontSize: 17.0,
+                fontWeight: FontWeight.bold),
+          ),
+          iconTheme: IconThemeData(
+            color: kTitleTextColor,
+          ),
+          elevation: 0.0,
+        ),
         scaffoldBackgroundColor: kBackgroundColor,
       ),
       initialRoute: OnboardingScreen.routeName,

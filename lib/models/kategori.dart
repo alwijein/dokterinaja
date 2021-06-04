@@ -14,15 +14,15 @@ class Kategori {
       judulKategori: 'Dokter Gigi',
     ),
     Kategori(
-      imgUrl: 'assets/icons/dental_surgeon.png',
+      imgUrl: 'assets/icons/eye_specialist.png',
       judulKategori: 'Dokter Mata',
     ),
     Kategori(
-      imgUrl: 'assets/icons/dental_surgeon.png',
+      imgUrl: 'assets/icons/heart_surgeon.png',
       judulKategori: 'Dokter Jantung',
     ),
     Kategori(
-      imgUrl: 'assets/icons/dental_surgeon.png',
+      imgUrl: 'assets/icons/heart_surgeon.png',
       judulKategori: 'Dokter Hati',
     ),
     Kategori(

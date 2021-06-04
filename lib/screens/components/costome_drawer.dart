@@ -1,3 +1,4 @@
+import 'package:about/about.dart';
 import 'package:dokterin_aja/constants.dart';
 import 'package:dokterin_aja/screens/home_screen/home_screen.dart';
 import 'package:dokterin_aja/screens/list_screen_dokter/list_screen_dokter.dart';
@@ -22,22 +23,69 @@ class CostumeDrawer extends StatelessWidget {
               ),
             ),
             ListTile(
+              leading: Icon(Icons.home_outlined),
+              title: Text('Home'),
+              onTap: () {
+                Navigator.pushReplacementNamed(
+                  context,
+                  HomeScreen.routeName,
+                );
+              },
+            ),
+            ListTile(
               leading: Icon(Icons.category_outlined),
               title: Text('Daftar Kategori'),
               onTap: () {
-                Navigator.pushNamed(context, ListScreenKategori.routeName);
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) {
+                  return ListScreenKategori(
+                    isDrawer: true,
+                  );
+                }));
               },
             ),
             ListTile(
               leading: Icon(Icons.list_alt_outlined),
               title: Text('Daftar Dokter'),
               onTap: () {
-                Navigator.pushNamed(context, ListScreenDokter.routeName);
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) {
+                  return ListScreenDokter(isDrawer: true);
+                }));
               },
             ),
             ListTile(
               leading: Icon(Icons.info_outline),
               title: Text('about us'),
+              onTap: () {
+                showAboutPage(
+                  context: context,
+                  values: {
+                    'version': '1.0',
+                    'year': DateTime.now().year.toString(),
+                  },
+                  applicationLegalese: 'Copyright © kelompok RPL, {{ year }}',
+                  applicationDescription: const Text(
+                      'Aplikasi konsultasi dokter yang dimana kita bisa melakukan konsultasi dengan dokter yang kita pilih dengan menghubunginya langsung menggunakan via whatsapp atau dengan meneleponnya langsung\n\nNama Stambuk Kelompok :\n\nAlwi Jaya (13020180226)\nAhmad Farid Aldin (13020180226)'),
+                  children: <Widget>[
+                    MarkdownPageListTile(
+                      icon: Icon(Icons.list),
+                      title: const Text('Changelog'),
+                      filename: 'CHANGELOG.md',
+                    ),
+                    LicensesPageListTile(
+                      icon: Icon(Icons.favorite),
+                    ),
+                  ],
+                  applicationIcon: const SizedBox(
+                    width: 100,
+                    height: 100,
+                    child: Image(
+                      image: AssetImage('assets/images/LogoDokterinAja.png'),
+                    ),
+                  ),
+                );
+              },
             ),
           ],
         ),

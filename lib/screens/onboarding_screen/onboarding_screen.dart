@@ -1,4 +1,5 @@
 import 'package:dokterin_aja/screens/onboarding_screen/components/body.dart';
+import 'package:dokterin_aja/services/exit_alert.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -6,7 +7,11 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Body(),
+      body: WillPopScope(
+          onWillPop: () async {
+            return exitAlert(context).show();
+          },
+          child: Body()),
     );
   }
 }

@@ -46,7 +46,7 @@ class CardDokter extends StatelessWidget {
             ),
           ),
           title: Text(
-            titleText,
+            'Dr. ' + titleText,
             style: TextStyle(
               color: kTitleTextColor,
               fontWeight: FontWeight.bold,

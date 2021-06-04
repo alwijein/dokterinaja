@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:dokterin_aja/constants.dart';
 import 'package:dokterin_aja/models/doctor.dart';
 import 'package:dokterin_aja/models/kategori.dart';
@@ -10,7 +10,6 @@ import 'package:dokterin_aja/screens/list_screen_dokter/list_screen_dokter.dart'
 import 'package:dokterin_aja/screens/list_screen_kategori/list_screen_kategori.dart';
 import 'package:dokterin_aja/services/database_services.dart';
 import 'package:dokterin_aja/size_config.dart';
-import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
   @override
