@@ -1,3 +1,8 @@
+import 'package:dokterin_aja/constants.dart';
+import 'package:dokterin_aja/screens/home_screen/home_screen.dart';
+import 'package:dokterin_aja/screens/list_screen_dokter/list_screen_dokter.dart';
+import 'package:dokterin_aja/screens/list_screen_kategori/list_screen_kategori.dart';
+import 'package:dokterin_aja/size_config.dart';
 import 'package:flutter/material.dart';
 
 class CostumeDrawer extends StatelessWidget {
@@ -9,14 +14,30 @@ class CostumeDrawer extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            UserAccountsDrawerHeader(
-              accountName: Text('Test123'),
-              accountEmail: Text('test@123.com'),
-              currentAccountPicture: Image.network(
-                  'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a89c3e38-b6f3-48a0-9f9e-df9a0129fb93/daghh5x-4a77b3ec-fd4f-4d17-9f84-5963a8cb5c03.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2E4OWMzZTM4LWI2ZjMtNDhhMC05ZjllLWRmOWEwMTI5ZmI5M1wvZGFnaGg1eC00YTc3YjNlYy1mZDRmLTRkMTctOWY4NC01OTYzYThjYjVjMDMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.dWTFMrwnbAbj5TtUp9U_vQsohW7MnkRPymzR5wZQoV8'),
+            Container(
+              color: kPrimaryColor,
+              height: getPropertionateScreenHeight(200),
+              child: Image.asset(
+                'assets/images/logo-drawer.png',
+              ),
             ),
             ListTile(
-              title: Text('data'),
+              leading: Icon(Icons.category_outlined),
+              title: Text('Daftar Kategori'),
+              onTap: () {
+                Navigator.pushNamed(context, ListScreenKategori.routeName);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.list_alt_outlined),
+              title: Text('Daftar Dokter'),
+              onTap: () {
+                Navigator.pushNamed(context, ListScreenDokter.routeName);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.info_outline),
+              title: Text('about us'),
             ),
           ],
         ),

@@ -1,4 +1,6 @@
+import 'package:dokterin_aja/models/kategori.dart';
 import 'package:dokterin_aja/screens/components/card_kategori.dart';
+import 'package:dokterin_aja/screens/list_screen_dokter/list_screen_dokter.dart';
 import 'package:dokterin_aja/utils/color_rand.dart';
 import 'package:flutter/material.dart';
 
@@ -16,42 +18,18 @@ class Body extends StatelessWidget {
         itemCount: 6,
         itemBuilder: (_, index) {
           return CardKategori(
-            image: 'assets/icons/dental_surgeon.png',
-            text: "Spesialis\nGigi",
-            press: () {},
+            image: Kategori.kategori[index].imgUrl,
+            text: Kategori.kategori[index].judulKategori,
+            press: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return ListScreenDokter(
+                  kategori: Kategori.kategori[index].judulKategori,
+                );
+              }));
+            },
           );
         },
       ),
     ));
-  }
-
-  SingleChildScrollView buildKategoriList() {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
-          CardKategori(
-            image: 'assets/icons/dental_surgeon.png',
-            text: "Spesialis\nGigi",
-            press: () {},
-          ),
-          CardKategori(
-            image: 'assets/icons/eye_specialist.png',
-            text: "Spesialis\nMata",
-            press: () {},
-          ),
-          CardKategori(
-            image: 'assets/icons/heart_surgeon.png',
-            text: "Spesialis\nJantung",
-            press: () {},
-          ),
-          CardKategori(
-            image: 'assets/icons/dental_surgeon.png',
-            text: "Spesialis\nGigi",
-            press: () {},
-          ),
-        ],
-      ),
-    );
   }
 }

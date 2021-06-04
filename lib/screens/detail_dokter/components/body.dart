@@ -1,9 +1,16 @@
 import 'package:dokterin_aja/constants.dart';
+import 'package:dokterin_aja/models/doctor.dart';
+import 'package:dokterin_aja/screens/components/pills_rounded.dart';
+import 'package:dokterin_aja/screens/detail_dokter/components/card_jadwal.dart';
+import 'package:dokterin_aja/screens/detail_dokter/components/desc_dokter.dart';
+import 'package:dokterin_aja/screens/detail_dokter/components/headling_title.dart';
 import 'package:dokterin_aja/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Body extends StatelessWidget {
+  final Doctor doctor;
+  Body(this.doctor);
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -11,7 +18,7 @@ class Body extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/detail_illustration.png'),
+            image: AssetImage('assets/images/detail-background.png'),
             alignment: Alignment.topCenter,
             fit: BoxFit.fitWidth,
           ),
@@ -51,9 +58,110 @@ class Body extends StatelessWidget {
                 ),
               ),
               child: Padding(
-                padding: EdgeInsets.only(top: 30, left: 30),
+                padding: EdgeInsets.only(top: 30, left: 30, right: 30),
                 child: Column(
-                  children: [],
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          height: getPropertionateScreenHeight(100),
+                          width: getPropertionateScreenWidht(100),
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: NetworkImage(doctor.imgUrl),
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              doctor.nama,
+                              style: TextStyle(
+                                color: kTitleTextColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: getPropertionateScreenHeight(25),
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  doctor.profesi,
+                                  style: TextStyle(
+                                    color: kSecondaryColor,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: getPropertionateScreenHeight(17),
+                                  ),
+                                ),
+                                Text(
+                                  "- Awal Bros",
+                                  style: TextStyle(
+                                    color: kSecondaryColor,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: getPropertionateScreenHeight(17),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                PillsRounded(
+                                  text: doctor.pengalaman,
+                                ),
+                                PillsRounded(
+                                  text: doctor.price,
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                SvgPicture.asset(
+                                  'assets/icons/phone.svg',
+                                  width: getPropertionateScreenWidht(20),
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                SvgPicture.asset(
+                                  'assets/icons/chat.svg',
+                                  width: getPropertionateScreenWidht(20),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        HeadlingTitle(
+                          title: 'Tentang Dokter',
+                        ),
+                        DescDokter(
+                          about: doctor.about,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            HeadlingTitle(
+                              title: 'Jadwal Kerja',
+                            ),
+                            CardJadwal(
+                              hari: "Senin - Jum'at",
+                              jam: doctor.jadwalKerja,
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ),

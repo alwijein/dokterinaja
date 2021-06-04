@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dokterin_aja/constants.dart';
 import 'package:dokterin_aja/models/doctor.dart';
+import 'package:dokterin_aja/models/kategori.dart';
 import 'package:dokterin_aja/screens/home_screen/components/banner_card.dart';
 import 'package:dokterin_aja/screens/home_screen/components/card_dokter.dart';
 import 'package:dokterin_aja/screens/components/card_kategori.dart';
@@ -46,7 +47,11 @@ class Body extends StatelessWidget {
                   SizedBox(
                     height: getPropertionateScreenHeight(10),
                   ),
-                  buildKategoriList(),
+                  Container(
+                    width: SizeConfig.screenWidth,
+                    height: SizeConfig.screenHeight * 0.16,
+                    child: buildKategoriList(),
+                  ),
                   SizedBox(
                     height: getPropertionateScreenHeight(30),
                   ),
@@ -80,6 +85,7 @@ class Body extends StatelessWidget {
           for (var dokter in snapshot.data) {
             cardDokter.add(
               CardDokter(
+                dokter,
                 img: dokter.imgUrl,
                 titleText: dokter.nama,
                 subtitleText: dokter.profesi,
@@ -91,11 +97,38 @@ class Body extends StatelessWidget {
           );
         } else {
           return Center(
-            child: CircularProgressIndicator(),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CircularProgressIndicator(),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  'Loading',
+                  style: TextStyle(
+                    color: kTitleTextColor,
+                  ),
+                )
+              ],
+            ),
           );
         }
       },
     );
+  }
+
+  ListView buildKategoriList() {
+    return ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: Kategori.kategori.length,
+        itemBuilder: (_, index) {
+          return CardKategori(
+            image: Kategori.kategori[index].imgUrl,
+            text: Kategori.kategori[index].judulKategori,
+          );
+        });
   }
 
 // list view builder for dokter card
@@ -112,33 +145,5 @@ class Body extends StatelessWidget {
 //               );
 //             },
 //           );
-  SingleChildScrollView buildKategoriList() {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
-          CardKategori(
-            image: 'assets/icons/dental_surgeon.png',
-            text: "Spesialis\nGigi",
-            press: () {},
-          ),
-          CardKategori(
-            image: 'assets/icons/eye_specialist.png',
-            text: "Spesialis\nMata",
-            press: () {},
-          ),
-          CardKategori(
-            image: 'assets/icons/heart_surgeon.png',
-            text: "Spesialis\nJantung",
-            press: () {},
-          ),
-          CardKategori(
-            image: 'assets/icons/dental_surgeon.png',
-            text: "Spesialis\nGigi",
-            press: () {},
-          ),
-        ],
-      ),
-    );
-  }
+
 }

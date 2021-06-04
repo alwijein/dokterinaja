@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 
 class ListScreenDokter extends StatelessWidget {
   static String routeName = "/listscreendokter";
+
+  final String kategori;
+  ListScreenDokter({this.kategori});
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -22,7 +25,10 @@ class ListScreenDokter extends StatelessWidget {
           ),
         ),
       ),
-      body: Body(),
+      body: Body(
+        kategori: this.kategori,
+        isKategori: true,
+      ),
     );
   }
 }

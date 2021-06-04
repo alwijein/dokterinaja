@@ -8,6 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 
 class Body extends StatefulWidget {
+  final bool isKategori;
+  final String kategori;
+  Body({this.isKategori = false, this.kategori});
   @override
   _BodyState createState() => _BodyState();
 }
@@ -22,7 +25,9 @@ class _BodyState extends State<Body> {
           width: SizeConfig.screenWidth,
           height: SizeConfig.screenHeight,
           child: FutureBuilder<List<Doctor>>(
-            future: DatabaseServices.doctors(),
+            future: widget.isKategori == false
+                ? DatabaseServices.doctors()
+                : DatabaseServices.doctorsKategoris(widget.kategori),
             builder: (_, snapshot) {
               if (snapshot.hasData) {
                 return EasyRefresh(

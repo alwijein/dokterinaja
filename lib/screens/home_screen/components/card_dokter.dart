@@ -1,11 +1,14 @@
 import 'package:dokterin_aja/constants.dart';
+import 'package:dokterin_aja/models/doctor.dart';
 import 'package:dokterin_aja/screens/detail_dokter/detail_dokter.dart';
 import 'package:dokterin_aja/size_config.dart';
 import 'package:dokterin_aja/utils/color_rand.dart';
 import 'package:flutter/material.dart';
 
 class CardDokter extends StatelessWidget {
-  const CardDokter({
+  final Doctor doctor;
+  const CardDokter(
+    this.doctor, {
     Key key,
     this.img,
     this.titleText,
@@ -18,7 +21,9 @@ class CardDokter extends StatelessWidget {
     ColorRand colorRand = new ColorRand();
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, DetailDokter.routeName);
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return DetailDokter(doctor);
+        }));
       },
       child: Container(
         margin: EdgeInsets.only(

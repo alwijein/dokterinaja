@@ -10,6 +10,6 @@ final Map<String, WidgetBuilder> routes = {
   OnboardingScreen.routeName: (context) => OnboardingScreen(),
   HomeScreen.routeName: (context) => HomeScreen(),
   ListScreenDokter.routeName: (context) => ListScreenDokter(),
-  DetailDokter.routeName: (context) => DetailDokter(),
+  // DetailDokter.routeName: (context) => DetailDokter(),
   ListScreenKategori.routeName: (context) => ListScreenKategori(),
 };

@@ -46,4 +46,25 @@ class DatabaseServices {
     }
     return doctorsLimit;
   }
+
+  static Future<List<Doctor>> doctorsKategoris(String kategori) async {
+    List<Doctor> doctorsLimit = [];
+    QuerySnapshot mapsLimit =
+        await collectionReference.where("profesi", isEqualTo: kategori).get();
+
+    for (var e in mapsLimit.docs) {
+      doctorsLimit.add(
+        Doctor(
+          imgUrl: e.data()['imgUrl'],
+          nama: e.data()['nama'],
+          profesi: e.data()['profesi'],
+          jadwalKerja: e.data()['jadwalKerja'],
+          price: e.data()['price'],
+          about: e.data()['about'],
+          pengalaman: e.data()['pengalaman'],
+        ),
+      );
+    }
+    return doctorsLimit;
+  }
 }
