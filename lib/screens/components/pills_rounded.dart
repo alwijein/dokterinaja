@@ -2,8 +2,6 @@ import 'package:dokterin_aja/constants.dart';
 import 'package:dokterin_aja/size_config.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart';
-
 class PillsRounded extends StatelessWidget {
   const PillsRounded({
     Key key,

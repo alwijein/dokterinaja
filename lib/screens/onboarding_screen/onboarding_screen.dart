@@ -1,5 +1,5 @@
 import 'package:dokterin_aja/screens/onboarding_screen/components/body.dart';
-import 'package:dokterin_aja/services/exit_alert.dart';
+import 'package:dokterin_aja/services/alert_services.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatelessWidget {

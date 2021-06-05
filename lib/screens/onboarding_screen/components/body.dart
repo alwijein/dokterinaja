@@ -1,6 +1,5 @@
 import 'package:dokterin_aja/constants.dart';
 import 'package:dokterin_aja/screens/home_screen/home_screen.dart';
-import 'package:dokterin_aja/size_config.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {

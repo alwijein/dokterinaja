@@ -9,11 +9,9 @@ class Doctor {
       about,
       pengalaman,
       nomor;
-  final int id;
 
 // konstruktor for doctor list
   Doctor({
-    @required this.id,
     @required this.nama,
     @required this.imgUrl,
     @required this.profesi,

@@ -66,7 +66,7 @@ class CostumeDrawer extends StatelessWidget {
                   },
                   applicationLegalese: 'Copyright © kelompok RPL, {{ year }}',
                   applicationDescription: const Text(
-                      'Aplikasi konsultasi dokter yang dimana kita bisa melakukan konsultasi dengan dokter yang kita pilih dengan menghubunginya langsung menggunakan via whatsapp atau dengan meneleponnya langsung\n\nNama Stambuk Kelompok :\n\nAlwi Jaya (13020180226)\nAhmad Farid Aldin (13020180226)'),
+                      'Aplikasi konsultasi dokter yang dimana kita bisa melakukan konsultasi dengan dokter yang kita pilih dengan menghubunginya langsung menggunakan via whatsapp atau dengan meneleponnya langsung\n\nNama Stambuk Kelompok :\n\nAlwi Jaya (13020180226)\nAchmad Farid Aldin (13020180243)\nAsrul Ashari Rajab (13020180249)\nHeldi Umar (13020180254)'),
                   children: <Widget>[
                     MarkdownPageListTile(
                       icon: Icon(Icons.list),

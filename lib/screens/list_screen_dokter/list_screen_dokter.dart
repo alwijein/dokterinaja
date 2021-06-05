@@ -1,7 +1,6 @@
-import 'package:dokterin_aja/constants.dart';
 import 'package:dokterin_aja/screens/components/costome_drawer.dart';
 import 'package:dokterin_aja/screens/list_screen_dokter/components/body.dart';
-import 'package:dokterin_aja/services/exit_alert.dart';
+import 'package:dokterin_aja/services/alert_services.dart';
 import 'package:dokterin_aja/size_config.dart';
 import 'package:flutter/material.dart';
 

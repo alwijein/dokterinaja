@@ -49,7 +49,7 @@ class Body extends StatelessWidget {
                   Container(
                     width: SizeConfig.screenWidth,
                     height: SizeConfig.screenHeight * 0.16,
-                    child: buildKategoriList(),
+                    child: buildKategoriList(context),
                   ),
                   SizedBox(
                     height: getPropertionateScreenHeight(30),
@@ -81,13 +81,13 @@ class Body extends StatelessWidget {
       builder: (_, snapshot) {
         if (snapshot.hasData) {
           List<CardDokter> cardDokter = [];
-          for (var dokter in snapshot.data) {
+          for (var doctor in snapshot.data) {
             cardDokter.add(
               CardDokter(
-                dokter,
-                img: dokter.imgUrl,
-                titleText: dokter.nama,
-                subtitleText: dokter.profesi,
+                doctor,
+                img: doctor.imgUrl,
+                titleText: doctor.nama,
+                subtitleText: doctor.profesi,
               ),
             );
           }
@@ -118,7 +118,7 @@ class Body extends StatelessWidget {
     );
   }
 
-  ListView buildKategoriList() {
+  ListView buildKategoriList(context) {
     return ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: Kategori.kategori.length,
@@ -126,6 +126,13 @@ class Body extends StatelessWidget {
           return CardKategori(
             image: Kategori.kategori[index].imgUrl,
             text: Kategori.kategori[index].judulKategori,
+            press: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return ListScreenDokter(
+                  kategori: Kategori.kategori[index].judulKategori,
+                );
+              }));
+            },
           );
         });
   }

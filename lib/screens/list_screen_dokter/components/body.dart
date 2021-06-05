@@ -49,6 +49,7 @@ class _BodyState extends State<Body> {
                         return DelayedDisplay(
                           delay: Duration(milliseconds: 200),
                           child: CardListDokter(
+                            doctor,
                             img: doctor.imgUrl,
                             nama: doctor.nama,
                             profesi: doctor.profesi,

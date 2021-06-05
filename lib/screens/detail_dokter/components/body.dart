@@ -5,6 +5,7 @@ import 'package:dokterin_aja/screens/detail_dokter/components/card_jadwal.dart';
 import 'package:dokterin_aja/screens/detail_dokter/components/desc_dokter.dart';
 import 'package:dokterin_aja/screens/detail_dokter/components/headling_title.dart';
 import 'package:dokterin_aja/size_config.dart';
+import 'package:dokterin_aja/utils/popup_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:delayed_display/delayed_display.dart';
@@ -41,14 +42,39 @@ class Body extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SvgPicture.asset(
-                    'assets/icons/back.svg',
-                    height: 18,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: SvgPicture.asset(
+                      'assets/icons/back.svg',
+                      height: 18,
+                    ),
                   ),
-                  SvgPicture.asset(
-                    'assets/icons/3dots.svg',
-                    height: 18,
-                  ),
+
+                  // Masih Bermasalah
+
+                  // GestureDetector(
+                  //   onTap: () {
+                  //     return PopupMenuButton(
+                  //       onSelected: (item) => SelectedItem(context, item),
+                  //       itemBuilder: (context) => [
+                  //         PopupMenuItem(
+                  //           value: 0,
+                  //           child: Text("Telepon"),
+                  //         ),
+                  //         PopupMenuItem(
+                  //           value: 1,
+                  //           child: Text("Chat Via WA"),
+                  //         ),
+                  //       ],
+                  //     );
+                  //   },
+                  //   child: SvgPicture.asset(
+                  //     'assets/icons/3dots.svg',
+                  //     height: 18,
+                  //   ),
+                  // ),
                 ],
               ),
             ),
