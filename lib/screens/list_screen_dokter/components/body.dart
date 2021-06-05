@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:dokterin_aja/constants.dart';
 import 'package:dokterin_aja/models/doctor.dart';
@@ -33,7 +32,10 @@ class _BodyState extends State<Body> {
               if (snapshot.hasData) {
                 if (snapshot.data.length == 0) {
                   return Center(
-                    child: Text('Error'),
+                    child: Image.asset(
+                      'assets/images/Saly-1-min.png',
+                      width: getPropertionateScreenWidht(400),
+                    ),
                   );
                 }
                 return EasyRefresh(
